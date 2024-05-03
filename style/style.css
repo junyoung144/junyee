@@ -1,0 +1,7 @@
+@import url(./reset.css);
+@import url(./container.css);
+@import url(./header.css);
+@import url(./footer.css);
+
+
+div.sub_cnts {padding-top: 100px;}
