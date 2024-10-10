@@ -5,47 +5,143 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="stylesheet" href="./style/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
+    <script src="javascript/script.js"></script>
+    <script src="../junyee/javascript/split-type.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <title>Document</title>
 </head>
+
 <body>
     <div id="header"></div>
-    <div class="sub_cnts" style="height:1500px">
-        <div class="container">
-            <p class="txt_title">우리는 사장님의 식자재 걱정을 덜어주는<br> 편리한 서비스를 만듭니다.</p>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="banner_box">
-                <ul class="banner_box_list">
-                    <li>
-                        <div class="img_box">
-                            <!-- <div class="img_box_txt">
-                                <p class="txt_title">TEST</p>
-                                <p class="txt_title_weight">TEST2</p>
-                                <p class="txt_title_weight2">TEST3</p>
-                            </div> -->
-                            <img src="./asset/img/bg_banner_02.png" alt="">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img_box">
-                            <!-- <div class="img_box_txt">
-                                <p class="txt_title">TEST</p>
-                                <p class="txt_title_weight">TEST2</p>
-                                <p class="txt_title_weight2">TEST3</p>
-                            </div> -->
-                            <img src="./asset/img/bg_banner_03.png" alt="">
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div class="parallax__progress">
+        <progress max="100" value="0"></progress>
     </div>
+    <main id="parallax__cont">
+        <section id="section1" class="parallax__item">
+            <div class="bg_video">
+                <video class="bg-video__content" autoplay muted loop>
+                    <source src="/junyee/asset/gif/test_mov.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </section>
+        <!-- //section1 -->
+
+        <section id="section2" class="parallax__item">
+            <span class="parallax__item__num">02</span>
+            <figure class="parallax__item__imgWrap">
+                <div class="parallax__item__img"></div>
+            </figure>
+        </section>
+        <!-- //section2 -->
+
+        <main id="horizontal">
+            <section id="section3" class="parallax__item">
+                <span class="parallax__item__num">03</span>
+                <figure class="parallax__item__imgWrap">
+                    <div class="parallax__item__img"></div>
+                </figure>
+            </section>
+            <!-- //section3 -->
+
+            <section id="section4" class="parallax__item">
+                <span class="parallax__item__num">04</span>
+                <figure class="parallax__item__imgWrap">
+                    <div class="parallax__item__img"></div>
+                </figure>
+            </section>
+            <!-- //section4 -->
+
+            <section id="section5" class="parallax__item">
+                <span class="parallax__item__num">05</span>
+                <figure class="parallax__item__imgWrap">
+                    <div class="parallax__item__img"></div>
+                </figure>
+            </section>
+            <!-- //section5 -->
+
+            <section id="section6" class="parallax__item">
+                <span class="parallax__item__num">06</span>
+                <figure class="parallax__item__imgWrap">
+                    <div class="parallax__item__img"></div>
+                </figure>
+            </section>
+            <!-- //section6 -->
+
+            <section id="section7" class="parallax__item">
+                <span class="parallax__item__num">07</span>
+                <figure class="parallax__item__imgWrap">
+                    <div class="parallax__item__img"></div>
+                </figure>
+            </section>
+            <!-- //section7 -->
+        </main>
+
+        <section id="section8" class="parallax__item">
+            <span class="parallax__item__num">08</span>
+            <figure class="parallax__item__imgWrap">
+                <div class="parallax__item__img"></div>
+            </figure>
+        </section>
+        <!-- //section8 -->
+
+        <section id="section9" class="parallax__item">
+            <span class="parallax__item__num">09</span>
+            <figure class="parallax__item__imgWrap">
+                <div class="parallax__item__img"></div>
+            </figure>
+        </section>
+        <!-- //section9 -->
+    </main>
+
     <div id="footer"></div>
 </body>
 </html>
-<script src="javascript/script.js"></script>
+
+
+
+
+<script>
+    const horizontal = document.querySelector("#horizontal"); 
+    const sections = gsap.utils.toArray("#horizontal > section");
+
+    gsap.to(sections, {
+        xPercent: -100 * (sections.length -1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: horizontal,
+            start: "top top",
+            end: () => "+=" + (horizontal.offsetWidth - innerWidth),
+            pin: true,
+            scrub: 1,
+            snap: {
+                snapTo: 1/(sections.length -1),
+                inertia: false,
+                duration: {min: 0.1, max: 0.1},
+            },
+            invalidateOnRefresh: true,
+            anticipatePin: 1
+        }
+    });
+    const lenis = new Lenis()
+
+    lenis.on('scroll', (e) => {
+    })
+
+    function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+    gsap.to("progress", {
+            value: 100,
+            ease: "none",
+            scrollTrigger: {scrub: 0.3}
+        });
+</script>
+
+

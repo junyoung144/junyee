@@ -2,50 +2,49 @@
 
 <header class="header_nav">
     <div class="container">
-        <nav class="header_nav_box">
-            <div class="header_left_img">
-                <div class="logo_icon"></div>
-            </div>
-            <div class="header_center_list">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="business.php">BUSINESS</a>
-                            <ul class="depth_2">
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="#">3D HPE Dataset</a>
-                            <ul class="depth_2">
-                                <li><a href="naver.com">Real-world dataset</a></li>
-                                <li><a href="#">Synthetic dataset</a></li>
-                                <li><a href="#">Calibration</a></li>
-                                <li><a href="#">Production history</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="#">Application</a>
-                            <ul class="depth_2">
-                                <li><a href="#">Celeb Avatar</a></li>
-                                <li><a href="#">Public Avatar</a></li>
-                                <li>
-                                    <a href="#">Commercial</a>
-                                    <ul class="depth_3">
-                                        <li><a href="#">PortFolio</a></li>
-                                        <li><a href="#">Commercial</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Contact US</a>
-                            <ul class="depth_2">
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+        <nav id="parallax__nav">
+            <ul>
+                <li><a href="#section1" class="active">s1
+                    <div class="hover_me">123</div>
+                </a></li>
+                <li><a href="#section2">s2</a></li>
+                <li><a href="#horizontal">s3</a></li>
+                <li><a href="#section4">s4</a></li>
+                <li><a href="#section5">s5</a></li>
+                <li><a href="#section6">s6</a></li>
+                <li><a href="#section7">s7</a></li>
+                <li><a href="#section8">s8</a></li>
+                <li><a href="#section9">s9</a></li>
+            </ul>
         </nav>
     </div>
 </header>
 
+<script>
+    let links = gsap.utils.toArray("#parallax__nav ul li a");
+
+    links.forEach(link => {
+        let element = document.querySelector(link.getAttribute("href"));
+        let linkST = ScrollTrigger.create({
+            trigger: element,
+            start: "top top"
+        });
+
+        ScrollTrigger.create({
+            trigger: element,
+            start: "top center",
+            end: "bottom center",
+            onToggle: self => setActive(link)
+        });
+
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            gsap.to(window, {duration: 1, scrollTo: linkST.start, overwrite: "auto"});
+        })
+    });
+
+    function setActive(link){
+        links.forEach(el => el.classList.remove("active"));
+        link.classList.add("active");
+    }
+</script>
