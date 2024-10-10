@@ -5,21 +5,96 @@
 @import url(./footer.css);
 
 body,header,footer {font-family: 'Pretendard';}
-p.txt_title {font-size: 60px;font-weight: 700; color: #333;line-height: 80px; border-bottom: 1px solid #fff;animation: text-clip 2s 0s cubic-bezier(0.5, 0, 0.1, 1) both;} 
-div.sub_cnts {padding-top: 200px;}
-div.sub_cnts > div.container div.banner_box {width: 100%;}
-div.sub_cnts > div.container div.banner_box ul.banner_box_list li div.img_box img {width: 100%;height: 420px;border-radius: 12px;}
-div.slick-track {gap: 0px;display: flex;}
-
-/* 텍스트 애니메이션 */
-
-@keyframes text-clip {
-    from {
-        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)
-    }
-
-    to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-
-    }
+.parallax__item {width: 100%;height: 100vh;}
+#horizontal {display: flex;flex-wrap: nowrap;width: 500%;}
+#horizontal > section {width: 100%;}
+#parallax__cont {
+    overflow: hidden;
 }
+
+
+section#section1.parallax__item {position: relative;}
+.parallax__item__num {color: #000;}
+
+.bg_video {width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
+.bg-video__content {height: 100%;width: 100%;object-fit: cover;position: relative;}
+.bg_video::after {content:"";width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.726);}
+
+
+main > section:nth-child(odd) {background-color: antiquewhite;} 
+
+#parallax__nav {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translate(0%,120%);
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.4);
+    padding: 15px 20px;
+    border-radius: 50px;
+}
+#parallax__nav li {
+
+}
+#parallax__nav li a {
+    display: inline-block;
+    width: 30px; 
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+
+}
+
+#parallax__nav li a > div.hover_me {
+    display: none;
+    position: absolute;
+    top:50%;
+    left: 80px;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    padding: 5px 0px;
+    z-index: -1;
+    border-radius: 120px;
+    transition: all 0.3s;
+}
+
+#parallax__nav li a:hover > div.hover_me {
+    display: block;
+    padding: 5px 60px;
+    transition: all 0.3s;
+}
+
+
+
+#parallax__nav li a.active {
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+}
+
+        /* optiopm */
+        .parallax__progress progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            width: 100%;
+            height: 5px;
+            border: none;
+            background: transparent;
+        }
+        progress::-webkit-progress-bar {
+            background: transparent;
+        }
+        progress::-webkit-progress-value {
+            background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
+            background-attachment: fixed;
+        }
+        progress::-moz-progress-value {
+            background: linear-gradient(to left, #db38b5,#01b3e3,#25ce7b,#fdc741,#ff6b01,#fc4236);
+            background-attachment: fixed;
+        }

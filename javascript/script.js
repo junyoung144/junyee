@@ -4,13 +4,3 @@ $(function() {
     $("#footer").load("footer.html");
 });
 
-$('.banner_box_list').slick({
-    dots: false,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    arrows:false,
-    fade: true,
-    cssEase: 'linear'
-  });
-                  
